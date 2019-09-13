@@ -2,18 +2,19 @@ import React, { Component } from 'react'
 import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import api from '../../services/api'
-import { Container, Form, List, SubmitButton } from './styles'
+import Container from '../../components/Container'
+import { Form, List, SubmitButton } from './styles'
 
 export default class Main extends Component {
   state = {
     newRepo: '',
     repositories: [],
-    loading: false,
+    loading: 0,
   }
 
   componentDidMount() {
     const repositories = localStorage.getItem('repositories')
-    console.log(repositories)
+
     if (repositories) {
       this.setState({ repositories: JSON.parse(repositories) })
     }
